@@ -18,5 +18,39 @@ namespace cw11_ef_code_first.Models
 
         }
 
+        //zad1 - seedowanie danych
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Doctor>().HasData(new Doctor
+            {
+                IdDoctor = 1,
+                FirstName = "Ferdek",
+                LastName = "Kiepski",
+                Email = "ferdekKiepski@gmail.com"
+            });
+
+            modelBuilder.Entity<Patient>().HasData(new Patient
+            {
+                IdPatient = 1,
+                FirstName = "Marian",
+                LastName = "Pazdzioch",
+                BirthDate = DateTime.Now
+            });
+
+            modelBuilder.Entity<Prescription>().HasData(new Prescription
+            {
+                IdPrescription = 1,
+                Date = DateTime.Now,
+                DueDate = DateTime.Now.AddDays(2),
+                IdPatient = 1,
+                IdDoctor = 1
+            });
+
+
+
+
+        }
+
     }
 }
