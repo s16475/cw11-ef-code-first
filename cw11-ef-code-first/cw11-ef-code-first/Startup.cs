@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using cw11_ef_code_first.Services;
 
 namespace cw11_ef_code_first
 {
@@ -29,6 +30,7 @@ namespace cw11_ef_code_first
         {
             services.AddDbContext<HospitalContext>(item => item.UseSqlServer(Configuration.GetConnectionString("myconn")));
             services.AddControllers();
+            services.AddScoped<IDbService, DbService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
